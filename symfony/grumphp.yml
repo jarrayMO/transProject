@@ -1,0 +1,13 @@
+grumphp:
+  tasks:
+    phpcs:
+      standard: PSR2
+      ignore_patterns: '*/tests/*'  # Ignore les fichiers dans le dossier tests/
+    phpstan:
+      level: max
+      configuration: phpstan.neon  # Fichier de configuration de PHPStan
+    phpmd:
+      ruleset: phpmd.xml  # Fichier de configuration de PHPMD
+    phpunit:
+      config_file: phpunit.xml.dist  # Fichier de configuration de PHPUnit
+    git_pre_commit: true  # Exécution avant chaque commit Git

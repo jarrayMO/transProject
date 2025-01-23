@@ -1,0 +1,13 @@
+parameters:
+    git_hook_variables:
+        parallel: true
+    tasks:
+        phpcs:
+            standard: PSR12
+        phpstan:
+            level: max
+        phpunit:
+            config_file: phpunit.xml.dist
+        yamllint:
+            rules:
+                extends: default
