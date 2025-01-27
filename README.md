@@ -7,14 +7,30 @@ Ce projet Symfony est configuré avec Docker pour simplifier le développement e
 - Docker et Docker Compose doivent être installés sur votre machine.
 - Assurez-vous d'avoir un accès à un terminal pour exécuter les commandes Docker et Make.
 
-## Démarrer l'application
+## URL de l'application
 
-### 1. Cloner ce dépôt
+Une fois les conteneurs démarrés, l'application Symfony est accessible à l'adresse suivante :
 
-Clonez ce dépôt sur votre machine locale :
+- [http://localhost:8080](http://localhost:8080)
+
+## Configuration de la base de données
+
+Les paramètres de la base de données sont définis dans le service `mysql` de Docker Compose :
+
+- **Nom de l'hôte** : `mysql`
+- **Port** : 3306
+- **Nom de la base de données** : `symfony_db`
+- **Utilisateur** : `root`
+- **Mot de passe** : `root`
+
+Ces informations doivent être ajoutées au fichier `.env` de Symfony :
+
+```dotenv
+DATABASE_URL="mysql://root:root@mysql:3306/symfony_db"
+
 
 ```bash
-git clone https://gitlab.com/mon-utilisateur/mon-projet-symfony.git
+git clone https://github.com/jarrayMO/transProject.git
 cd mon-projet-symfony
 
 Voici un résumé des principales commandes Make disponibles dans ce projet :

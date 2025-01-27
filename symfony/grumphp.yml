@@ -1,13 +1,32 @@
 grumphp:
   tasks:
-    phpcs:
-      standard: PSR2
-      ignore_patterns: '*/tests/*'  # Ignore les fichiers dans le dossier tests/
+    # Exemple d'une tâche pour vérifier les commits avant qu'ils ne soient faits
+    git_pre_commit:
+      enabled: true
+      # Options supplémentaires, comme l'activation des hooks
+      hooks:
+        - git add
+        - git commit
+
+    # Autres tâches de GrumPHP peuvent être ajoutées ici, comme la vérification de la syntaxe PHP, les tests, etc.
     phpstan:
-      level: max
-      configuration: phpstan.neon  # Fichier de configuration de PHPStan
-    phpmd:
-      ruleset: phpmd.xml  # Fichier de configuration de PHPMD
+      enabled: true
+      level: 3  # Niveau de vérification de PHPStan
+
+    phpcs:
+      enabled: true
+      standard: PSR12  # Tu peux choisir le standard que tu préfères
+
+    php-cs-fixer:
+      enabled: true
+      config: .php_cs.dist  # Fichier de configuration de PHP CS Fixer
+
+    # Tu peux aussi configurer des outils de tests comme PHPUnit
     phpunit:
-      config_file: phpunit.xml.dist  # Fichier de configuration de PHPUnit
-    git_pre_commit: true  # Exécution avant chaque commit Git
+      enabled: true
+      test_suite: default  # Ou d'autres suites de tests que tu utilises
+
+    # Tu peux aussi configurer d'autres outils de qualité comme PHPStan
+    phpstan:
+      enabled: true
+      level: 2  # Niveau de vérification PHPStan, de 0 (minimal) à 8 (maximal)

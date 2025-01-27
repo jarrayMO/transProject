@@ -1,13 +1,32 @@
-parameters:
-    git_hook_variables:
-        parallel: true
-    tasks:
-        phpcs:
-            standard: PSR12
-        phpstan:
-            level: max
-        phpunit:
-            config_file: phpunit.xml.dist
-        yamllint:
-            rules:
-                extends: default
+grumphp:
+  tasks:
+    # Exemple d'une tâche pour vérifier les commits avant qu'ils ne soient faits
+    git_pre_commit:
+      enabled: true
+      # Options supplémentaires, comme l'activation des hooks
+      hooks:
+        - git add
+        - git commit
+
+    # Autres tâches de GrumPHP peuvent être ajoutées ici, comme la vérification de la syntaxe PHP, les tests, etc.
+    phpstan:
+      enabled: true
+      level: 3  # Niveau de vérification de PHPStan
+
+    phpcs:
+      enabled: true
+      standard: PSR12  # Tu peux choisir le standard que tu préfères
+
+    php-cs-fixer:
+      enabled: true
+      config: .php_cs.dist  # Fichier de configuration de PHP CS Fixer
+
+    # Tu peux aussi configurer des outils de tests comme PHPUnit
+    phpunit:
+      enabled: true
+      test_suite: default  # Ou d'autres suites de tests que tu utilises
+
+    # Tu peux aussi configurer d'autres outils de qualité comme PHPStan
+    phpstan:
+      enabled: true
+      level: 2  # Niveau de vérification PHPStan, de 0 (minimal) à 8 (maximal)

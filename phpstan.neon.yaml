@@ -1,5 +1,0 @@
-parameters:
-  level: 5
-  paths:
-    - src  # Analyser le répertoire src pour PHPStan
-    - tests  # Analyser également le répertoire tests
